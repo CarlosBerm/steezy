@@ -17,7 +17,7 @@ export interface Trick {
   description: string;
   difficulty: 1 | 2 | 3 | 4 | 5; // 1 = beginner, 5 = expert
   risk: 1 | 2 | 3 | 4 | 5; // 1 = low risk, 5 = high risk
-  category: "grabs" | "spins" | "flips" | "rails" | "jumps" | "butters";
+  category: 'grabs' | 'spins' | 'flips' | 'rails' | 'jumps' | 'butters';
   steezPoints: number;
   prerequisites?: string[]; // IDs of tricks that should be learned first
 }
@@ -26,7 +26,7 @@ export interface Trick {
 export interface UserTrickProgress {
   trickId: string;
   userId: string;
-  comfortLevel: "learning" | "trying" | "comfortable" | "mastered";
+  comfortLevel: 'learning' | 'trying' | 'comfortable' | 'mastered';
   attempts: number;
   completedAt?: Date;
   videoUrl?: string;
@@ -63,8 +63,8 @@ export interface Level {
 // Navigation types
 export type RootStackParamList = {
   MainTabs: undefined;
-  TrickDetail: { trickId: string };
-  Profile: { userId?: string };
+  TrickDetail: {trickId: string};
+  Profile: {userId?: string};
   Friends: undefined;
   AddFriend: undefined;
 };

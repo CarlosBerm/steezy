@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-} from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const HomeScreen: React.FC = () => {
   // Mock data - in a real app this would come from a state management solution
   const userLevel = 3;
   const steezPoints = 1250;
   const nextLevelPoints = 1500;
-  const currentTrick = "Frontside 180";
-  const nextTrick = "Backside 180";
+  const currentTrick = 'Frontside 180';
+  const nextTrick = 'Backside 180';
 
   return (
     <ScrollView style={styles.container}>
@@ -36,7 +36,7 @@ const HomeScreen: React.FC = () => {
           <View
             style={[
               styles.progressFill,
-              { width: `${(steezPoints / nextLevelPoints) * 100}%` },
+              {width: `${(steezPoints / nextLevelPoints) * 100}%`},
             ]}
           />
         </View>
@@ -99,113 +99,113 @@ const HomeScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: '#f5f5f5',
   },
   header: {
     padding: 20,
-    backgroundColor: "#2196F3",
+    backgroundColor: '#2196F3',
     marginBottom: 16,
   },
   title: {
     fontSize: 28,
-    fontWeight: "bold",
-    color: "white",
+    fontWeight: 'bold',
+    color: 'white',
     marginBottom: 4,
   },
   subtitle: {
     fontSize: 16,
-    color: "rgba(255, 255, 255, 0.8)",
+    color: 'rgba(255, 255, 255, 0.8)',
   },
   card: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     marginHorizontal: 16,
     marginBottom: 16,
     padding: 16,
     borderRadius: 12,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
   },
   levelHeader: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 12,
   },
   cardTitle: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginLeft: 8,
-    color: "#333",
+    color: '#333',
   },
   pointsText: {
     fontSize: 16,
-    color: "#666",
+    color: '#666',
     marginBottom: 8,
   },
   progressBar: {
     height: 8,
-    backgroundColor: "#e0e0e0",
+    backgroundColor: '#e0e0e0',
     borderRadius: 4,
     marginBottom: 8,
   },
   progressFill: {
-    height: "100%",
-    backgroundColor: "#2196F3",
+    height: '100%',
+    backgroundColor: '#2196F3',
     borderRadius: 4,
   },
   progressText: {
     fontSize: 14,
-    color: "#666",
+    color: '#666',
   },
   trickName: {
     fontSize: 20,
-    fontWeight: "bold",
-    color: "#333",
+    fontWeight: 'bold',
+    color: '#333',
     marginBottom: 8,
   },
   trickDescription: {
     fontSize: 14,
-    color: "#666",
+    color: '#666',
     marginBottom: 16,
     lineHeight: 20,
   },
   button: {
-    backgroundColor: "#2196F3",
+    backgroundColor: '#2196F3',
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: 8,
-    alignItems: "center",
+    alignItems: 'center',
   },
   buttonText: {
-    color: "white",
+    color: 'white',
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: '600',
   },
   secondaryButton: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     borderWidth: 1,
-    borderColor: "#2196F3",
+    borderColor: '#2196F3',
   },
   secondaryButtonText: {
-    color: "#2196F3",
+    color: '#2196F3',
   },
   quickActions: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     paddingHorizontal: 16,
     paddingVertical: 20,
   },
   actionButton: {
-    alignItems: "center",
+    alignItems: 'center',
     flex: 1,
   },
   actionText: {
     marginTop: 8,
     fontSize: 12,
-    color: "#2196F3",
-    fontWeight: "500",
+    color: '#2196F3',
+    fontWeight: '500',
   },
 });
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -6,93 +6,93 @@ import {
   FlatList,
   TouchableOpacity,
   TextInput,
-} from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const FriendsScreen: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTab, setSelectedTab] = useState<"friends" | "search">(
-    "friends"
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedTab, setSelectedTab] = useState<'friends' | 'search'>(
+    'friends',
   );
 
   // Mock friends data
   const friends = [
     {
-      id: "alex_rider",
-      username: "alex_rider",
+      id: 'alex_rider',
+      username: 'alex_rider',
       level: 4,
       steezPoints: 1800,
-      status: "online",
-      lastSeen: "Active now",
+      status: 'online',
+      lastSeen: 'Active now',
     },
     {
-      id: "sarah_shreds",
-      username: "sarah_shreds",
+      id: 'sarah_shreds',
+      username: 'sarah_shreds',
       level: 5,
       steezPoints: 2100,
-      status: "online",
-      lastSeen: "Active 2h ago",
+      status: 'online',
+      lastSeen: 'Active 2h ago',
     },
     {
-      id: "mike_mountain",
-      username: "mike_mountain",
+      id: 'mike_mountain',
+      username: 'mike_mountain',
       level: 2,
       steezPoints: 800,
-      status: "offline",
-      lastSeen: "Active yesterday",
+      status: 'offline',
+      lastSeen: 'Active yesterday',
     },
     {
-      id: "powder_seeker",
-      username: "powder_seeker",
+      id: 'powder_seeker',
+      username: 'powder_seeker',
       level: 6,
       steezPoints: 3200,
-      status: "online",
-      lastSeen: "Active 30m ago",
+      status: 'online',
+      lastSeen: 'Active 30m ago',
     },
   ];
 
   // Mock search results
   const searchResults = [
     {
-      id: "fresh_tracks",
-      username: "fresh_tracks",
+      id: 'fresh_tracks',
+      username: 'fresh_tracks',
       level: 3,
       steezPoints: 1400,
       mutualFriends: 2,
     },
     {
-      id: "slope_master",
-      username: "slope_master",
+      id: 'slope_master',
+      username: 'slope_master',
       level: 4,
       steezPoints: 1900,
       mutualFriends: 1,
     },
   ];
 
-  const filteredFriends = friends.filter((friend) =>
-    friend.username.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredFriends = friends.filter(friend =>
+    friend.username.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   const getLevelColor = (level: number) => {
     const colors = [
-      "#8BC34A",
-      "#2196F3",
-      "#FF9800",
-      "#9C27B0",
-      "#F44336",
-      "#FFD700",
+      '#8BC34A',
+      '#2196F3',
+      '#FF9800',
+      '#9C27B0',
+      '#F44336',
+      '#FFD700',
     ];
     return colors[Math.min(level - 1, colors.length - 1)];
   };
 
-  const renderFriend = ({ item }: { item: any }) => (
+  const renderFriend = ({item}: {item: any}) => (
     <TouchableOpacity style={styles.friendCard}>
       <View style={styles.friendInfo}>
         <View style={styles.avatarContainer}>
           <View style={styles.avatar}>
             <Icon name="person" size={24} color="#666" />
           </View>
-          {item.status === "online" && <View style={styles.onlineIndicator} />}
+          {item.status === 'online' && <View style={styles.onlineIndicator} />}
         </View>
 
         <View style={styles.friendDetails}>
@@ -100,8 +100,7 @@ const FriendsScreen: React.FC = () => {
           <View style={styles.friendLevel}>
             <Icon name="stars" size={16} color={getLevelColor(item.level)} />
             <Text
-              style={[styles.levelText, { color: getLevelColor(item.level) }]}
-            >
+              style={[styles.levelText, {color: getLevelColor(item.level)}]}>
               Level {item.level}
             </Text>
             <Text style={styles.pointsText}>• {item.steezPoints} pts</Text>
@@ -124,7 +123,7 @@ const FriendsScreen: React.FC = () => {
     </TouchableOpacity>
   );
 
-  const renderSearchResult = ({ item }: { item: any }) => (
+  const renderSearchResult = ({item}: {item: any}) => (
     <TouchableOpacity style={styles.searchResultCard}>
       <View style={styles.friendInfo}>
         <View style={styles.avatar}>
@@ -136,8 +135,7 @@ const FriendsScreen: React.FC = () => {
           <View style={styles.friendLevel}>
             <Icon name="stars" size={16} color={getLevelColor(item.level)} />
             <Text
-              style={[styles.levelText, { color: getLevelColor(item.level) }]}
-            >
+              style={[styles.levelText, {color: getLevelColor(item.level)}]}>
               Level {item.level}
             </Text>
             <Text style={styles.pointsText}>• {item.steezPoints} pts</Text>
@@ -175,7 +173,7 @@ const FriendsScreen: React.FC = () => {
           onChangeText={setSearchQuery}
         />
         {searchQuery.length > 0 && (
-          <TouchableOpacity onPress={() => setSearchQuery("")}>
+          <TouchableOpacity onPress={() => setSearchQuery('')}>
             <Icon name="clear" size={20} color="#666" />
           </TouchableOpacity>
         )}
@@ -184,57 +182,52 @@ const FriendsScreen: React.FC = () => {
       {/* Tab Navigation */}
       <View style={styles.tabContainer}>
         <TouchableOpacity
-          style={[styles.tab, selectedTab === "friends" && styles.activeTab]}
-          onPress={() => setSelectedTab("friends")}
-        >
+          style={[styles.tab, selectedTab === 'friends' && styles.activeTab]}
+          onPress={() => setSelectedTab('friends')}>
           <Text
             style={[
               styles.tabText,
-              selectedTab === "friends" && styles.activeTabText,
-            ]}
-          >
+              selectedTab === 'friends' && styles.activeTabText,
+            ]}>
             My Friends ({friends.length})
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.tab, selectedTab === "search" && styles.activeTab]}
-          onPress={() => setSelectedTab("search")}
-        >
+          style={[styles.tab, selectedTab === 'search' && styles.activeTab]}
+          onPress={() => setSelectedTab('search')}>
           <Text
             style={[
               styles.tabText,
-              selectedTab === "search" && styles.activeTabText,
-            ]}
-          >
+              selectedTab === 'search' && styles.activeTabText,
+            ]}>
             Discover
           </Text>
         </TouchableOpacity>
       </View>
 
       {/* Friends List or Search Results */}
-      {selectedTab === "friends" ? (
+      {selectedTab === 'friends' ? (
         <FlatList
           data={filteredFriends}
           renderItem={renderFriend}
-          keyExtractor={(item) => item.id}
+          keyExtractor={item => item.id}
           contentContainerStyle={styles.listContainer}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => (
             <View style={styles.emptyState}>
               <Icon name="people" size={64} color="#ccc" />
               <Text style={styles.emptyTitle}>
-                {searchQuery ? "No friends found" : "No friends yet"}
+                {searchQuery ? 'No friends found' : 'No friends yet'}
               </Text>
               <Text style={styles.emptySubtitle}>
                 {searchQuery
-                  ? "Try a different search term"
-                  : "Start connecting with other riders!"}
+                  ? 'Try a different search term'
+                  : 'Start connecting with other riders!'}
               </Text>
               {!searchQuery && (
                 <TouchableOpacity
                   style={styles.discoverButton}
-                  onPress={() => setSelectedTab("search")}
-                >
+                  onPress={() => setSelectedTab('search')}>
                   <Text style={styles.discoverButtonText}>Discover Riders</Text>
                 </TouchableOpacity>
               )}
@@ -245,7 +238,7 @@ const FriendsScreen: React.FC = () => {
         <FlatList
           data={searchResults}
           renderItem={renderSearchResult}
-          keyExtractor={(item) => item.id}
+          keyExtractor={item => item.id}
           contentContainerStyle={styles.listContainer}
           showsVerticalScrollIndicator={false}
           ListHeaderComponent={() => (
@@ -281,186 +274,186 @@ const FriendsScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: '#f5f5f5',
   },
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderBottomWidth: 1,
-    borderBottomColor: "#e0e0e0",
+    borderBottomColor: '#e0e0e0',
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
+    fontWeight: 'bold',
+    color: '#333',
   },
   inviteButton: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
-    backgroundColor: "#e3f2fd",
+    backgroundColor: '#e3f2fd',
   },
   inviteText: {
     marginLeft: 6,
     fontSize: 14,
-    color: "#2196F3",
-    fontWeight: "500",
+    color: '#2196F3',
+    fontWeight: '500',
   },
   searchContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderBottomWidth: 1,
-    borderBottomColor: "#e0e0e0",
+    borderBottomColor: '#e0e0e0',
   },
   searchInput: {
     flex: 1,
     marginLeft: 12,
     fontSize: 16,
-    color: "#333",
+    color: '#333',
   },
   tabContainer: {
-    flexDirection: "row",
-    backgroundColor: "white",
+    flexDirection: 'row',
+    backgroundColor: 'white',
   },
   tab: {
     flex: 1,
     paddingVertical: 16,
-    alignItems: "center",
+    alignItems: 'center',
     borderBottomWidth: 2,
-    borderBottomColor: "transparent",
+    borderBottomColor: 'transparent',
   },
   activeTab: {
-    borderBottomColor: "#2196F3",
+    borderBottomColor: '#2196F3',
   },
   tabText: {
     fontSize: 16,
-    color: "#666",
-    fontWeight: "500",
+    color: '#666',
+    fontWeight: '500',
   },
   activeTabText: {
-    color: "#2196F3",
+    color: '#2196F3',
   },
   listContainer: {
     paddingVertical: 8,
   },
   friendCard: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "white",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'white',
     marginHorizontal: 16,
     marginVertical: 4,
     padding: 16,
     borderRadius: 12,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 2,
   },
   searchResultCard: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "white",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'white',
     marginHorizontal: 16,
     marginVertical: 4,
     padding: 16,
     borderRadius: 12,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 1 },
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 2,
   },
   friendInfo: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     flex: 1,
   },
   avatarContainer: {
-    position: "relative",
+    position: 'relative',
     marginRight: 12,
   },
   avatar: {
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: "#f0f0f0",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: '#f0f0f0',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   onlineIndicator: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 2,
     right: 2,
     width: 12,
     height: 12,
     borderRadius: 6,
-    backgroundColor: "#4CAF50",
+    backgroundColor: '#4CAF50',
     borderWidth: 2,
-    borderColor: "white",
+    borderColor: 'white',
   },
   friendDetails: {
     flex: 1,
   },
   friendName: {
     fontSize: 16,
-    fontWeight: "600",
-    color: "#333",
+    fontWeight: '600',
+    color: '#333',
     marginBottom: 2,
   },
   friendLevel: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 2,
   },
   levelText: {
     marginLeft: 4,
     fontSize: 12,
-    fontWeight: "500",
+    fontWeight: '500',
   },
   pointsText: {
     marginLeft: 4,
     fontSize: 12,
-    color: "#666",
+    color: '#666',
   },
   lastSeen: {
     fontSize: 12,
-    color: "#999",
+    color: '#999',
   },
   mutualFriends: {
     fontSize: 12,
-    color: "#666",
+    color: '#666',
   },
   friendActions: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   actionButton: {
     padding: 8,
     marginLeft: 4,
   },
   addButton: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
-    backgroundColor: "#e3f2fd",
+    backgroundColor: '#e3f2fd',
   },
   addButtonText: {
     marginLeft: 6,
     fontSize: 14,
-    color: "#2196F3",
-    fontWeight: "500",
+    color: '#2196F3',
+    fontWeight: '500',
   },
   sectionHeader: {
     padding: 16,
@@ -468,60 +461,60 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#333",
+    fontWeight: 'bold',
+    color: '#333',
     marginBottom: 4,
   },
   sectionSubtitle: {
     fontSize: 14,
-    color: "#666",
+    color: '#666',
   },
   emptyState: {
-    alignItems: "center",
+    alignItems: 'center',
     paddingVertical: 40,
     paddingHorizontal: 20,
   },
   emptyTitle: {
     fontSize: 18,
-    fontWeight: "bold",
-    color: "#666",
+    fontWeight: 'bold',
+    color: '#666',
     marginTop: 16,
     marginBottom: 8,
   },
   emptySubtitle: {
     fontSize: 14,
-    color: "#999",
-    textAlign: "center",
+    color: '#999',
+    textAlign: 'center',
     marginBottom: 20,
   },
   discoverButton: {
     paddingHorizontal: 24,
     paddingVertical: 12,
     borderRadius: 24,
-    backgroundColor: "#2196F3",
+    backgroundColor: '#2196F3',
   },
   discoverButtonText: {
-    color: "white",
+    color: 'white',
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: '600',
   },
   quickActions: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     paddingVertical: 16,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderTopWidth: 1,
-    borderTopColor: "#e0e0e0",
+    borderTopColor: '#e0e0e0',
   },
   quickActionButton: {
-    alignItems: "center",
+    alignItems: 'center',
     flex: 1,
   },
   quickActionText: {
     marginTop: 6,
     fontSize: 12,
-    color: "#2196F3",
-    fontWeight: "500",
+    color: '#2196F3',
+    fontWeight: '500',
   },
 });
 

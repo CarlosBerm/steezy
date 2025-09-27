@@ -1,18 +1,18 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import React from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // Screens
-import HomeScreen from "../screens/HomeScreen";
-import TricksScreen from "../screens/TricksScreen";
-import ProgressScreen from "../screens/ProgressScreen";
-import SocialScreen from "../screens/SocialScreen";
-import ProfileScreen from "../screens/ProfileScreen";
-import TrickDetailScreen from "../screens/TrickDetailScreen";
-import FriendsScreen from "../screens/FriendsScreen";
+import HomeScreen from '../screens/HomeScreen';
+import TricksScreen from '../screens/TricksScreen';
+import ProgressScreen from '../screens/ProgressScreen';
+import SocialScreen from '../screens/SocialScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import TrickDetailScreen from '../screens/TrickDetailScreen';
+import FriendsScreen from '../screens/FriendsScreen';
 
-import { RootStackParamList } from "../types";
+import {RootStackParamList} from '../types';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -20,35 +20,34 @@ const Tab = createBottomTabNavigator();
 const MainTabs: React.FC = () => {
   return (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName = "";
+      screenOptions={({route}) => ({
+        tabBarIcon: ({color, size}) => {
+          let iconName = '';
 
           switch (route.name) {
-            case "Home":
-              iconName = "home";
+            case 'Home':
+              iconName = 'home';
               break;
-            case "Tricks":
-              iconName = "sports";
+            case 'Tricks':
+              iconName = 'sports';
               break;
-            case "Progress":
-              iconName = "trending-up";
+            case 'Progress':
+              iconName = 'trending-up';
               break;
-            case "Social":
-              iconName = "people";
+            case 'Social':
+              iconName = 'people';
               break;
-            case "Profile":
-              iconName = "person";
+            case 'Profile':
+              iconName = 'person';
               break;
           }
 
           return <Icon name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: "#2196F3",
-        tabBarInactiveTintColor: "gray",
+        tabBarActiveTintColor: '#2196F3',
+        tabBarInactiveTintColor: 'gray',
         headerShown: false,
-      })}
-    >
+      })}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Tricks" component={TricksScreen} />
       <Tab.Screen name="Progress" component={ProgressScreen} />
@@ -64,17 +63,17 @@ const AppNavigator: React.FC = () => {
       <Stack.Screen
         name="MainTabs"
         component={MainTabs}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="TrickDetail"
         component={TrickDetailScreen}
-        options={{ title: "Trick Details" }}
+        options={{title: 'Trick Details'}}
       />
       <Stack.Screen
         name="Friends"
         component={FriendsScreen}
-        options={{ title: "Friends" }}
+        options={{title: 'Friends'}}
       />
     </Stack.Navigator>
   );

@@ -1,76 +1,76 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
   TouchableOpacity,
-  Image,
+
   TextInput,
-} from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import { SocialPost } from "../types";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {SocialPost} from '../types';
 
 const SocialScreen: React.FC = () => {
-  const [showComments, setShowComments] = useState<{ [key: string]: boolean }>(
-    {}
+  const [showComments, setShowComments] = useState<{[key: string]: boolean}>(
+    {},
   );
 
   // Mock social feed data
   const feedPosts: SocialPost[] = [
     {
-      id: "1",
-      userId: "alex_rider",
+      id: '1',
+      userId: 'alex_rider',
       content:
-        "Just landed my first backside 360! 🔥 Been working on this for weeks!",
-      trickId: "4",
-      likes: ["user1", "user2", "user3"],
+        'Just landed my first backside 360! 🔥 Been working on this for weeks!',
+      trickId: '4',
+      likes: ['user1', 'user2', 'user3'],
       comments: [
         {
-          id: "c1",
-          userId: "sarah_shreds",
-          content: "So clean! Great progress! 🙌",
-          createdAt: new Date("2024-01-20T10:30:00"),
+          id: 'c1',
+          userId: 'sarah_shreds',
+          content: 'So clean! Great progress! 🙌',
+          createdAt: new Date('2024-01-20T10:30:00'),
         },
         {
-          id: "c2",
-          userId: "mike_mountain",
-          content: "Nice! That grab was perfect",
-          createdAt: new Date("2024-01-20T11:15:00"),
+          id: 'c2',
+          userId: 'mike_mountain',
+          content: 'Nice! That grab was perfect',
+          createdAt: new Date('2024-01-20T11:15:00'),
         },
       ],
-      createdAt: new Date("2024-01-20T09:45:00"),
+      createdAt: new Date('2024-01-20T09:45:00'),
     },
     {
-      id: "2",
-      userId: "sarah_shreds",
+      id: '2',
+      userId: 'sarah_shreds',
       content:
-        "Level 5 unlocked! 🏆 Finally hit that 2000 steez points milestone. Next goal: frontflip!",
-      likes: ["user1", "alex_rider", "mike_mountain"],
+        'Level 5 unlocked! 🏆 Finally hit that 2000 steez points milestone. Next goal: frontflip!',
+      likes: ['user1', 'alex_rider', 'mike_mountain'],
       comments: [
         {
-          id: "c3",
-          userId: "alex_rider",
+          id: 'c3',
+          userId: 'alex_rider',
           content: "Congrats! You're killing it this season",
-          createdAt: new Date("2024-01-19T16:20:00"),
+          createdAt: new Date('2024-01-19T16:20:00'),
         },
       ],
-      createdAt: new Date("2024-01-19T15:30:00"),
+      createdAt: new Date('2024-01-19T15:30:00'),
     },
     {
-      id: "3",
-      userId: "mike_mountain",
+      id: '3',
+      userId: 'mike_mountain',
       content:
-        "Perfect powder day at Whistler! Got some sick footage of my method grab. Nothing beats that feeling! ⛷️",
-      trickId: "6",
-      likes: ["user1", "sarah_shreds"],
+        'Perfect powder day at Whistler! Got some sick footage of my method grab. Nothing beats that feeling! ⛷️',
+      trickId: '6',
+      likes: ['user1', 'sarah_shreds'],
       comments: [],
-      createdAt: new Date("2024-01-18T12:00:00"),
+      createdAt: new Date('2024-01-18T12:00:00'),
     },
   ];
 
   const toggleComments = (postId: string) => {
-    setShowComments((prev) => ({
+    setShowComments(prev => ({
       ...prev,
       [postId]: !prev[postId],
     }));
@@ -87,11 +87,11 @@ const SocialScreen: React.FC = () => {
     } else if (diffHours > 0) {
       return `${diffHours}h ago`;
     } else {
-      return "Just now";
+      return 'Just now';
     }
   };
 
-  const renderPost = ({ item }: { item: SocialPost }) => (
+  const renderPost = ({item}: {item: SocialPost}) => (
     <View style={styles.postCard}>
       {/* Post Header */}
       <View style={styles.postHeader}>
@@ -128,15 +128,14 @@ const SocialScreen: React.FC = () => {
           <Icon
             name="favorite"
             size={20}
-            color={item.likes.includes("user1") ? "#F44336" : "#666"}
+            color={item.likes.includes('user1') ? '#F44336' : '#666'}
           />
           <Text style={styles.actionText}>{item.likes.length}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.actionButton}
-          onPress={() => toggleComments(item.id)}
-        >
+          onPress={() => toggleComments(item.id)}>
           <Icon name="comment" size={20} color="#666" />
           <Text style={styles.actionText}>{item.comments.length}</Text>
         </TouchableOpacity>
@@ -150,7 +149,7 @@ const SocialScreen: React.FC = () => {
       {/* Comments Section */}
       {showComments[item.id] && (
         <View style={styles.commentsSection}>
-          {item.comments.map((comment) => (
+          {item.comments.map(comment => (
             <View key={comment.id} style={styles.comment}>
               <View style={styles.commentAvatar}>
                 <Icon name="person" size={16} color="#666" />
@@ -212,7 +211,7 @@ const SocialScreen: React.FC = () => {
       <FlatList
         data={feedPosts}
         renderItem={renderPost}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
         contentContainerStyle={styles.feedList}
         showsVerticalScrollIndicator={false}
         refreshing={false}
@@ -227,140 +226,140 @@ const SocialScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: '#f5f5f5',
   },
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderBottomWidth: 1,
-    borderBottomColor: "#e0e0e0",
+    borderBottomColor: '#e0e0e0',
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
+    fontWeight: 'bold',
+    color: '#333',
   },
   createPostButton: {
     padding: 8,
   },
   filterContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderBottomWidth: 1,
-    borderBottomColor: "#e0e0e0",
+    borderBottomColor: '#e0e0e0',
   },
   filterButton: {
     paddingHorizontal: 16,
     paddingVertical: 8,
     marginRight: 12,
     borderRadius: 16,
-    backgroundColor: "#f0f0f0",
+    backgroundColor: '#f0f0f0',
   },
   activeFilter: {
-    backgroundColor: "#2196F3",
+    backgroundColor: '#2196F3',
   },
   filterText: {
     fontSize: 14,
-    color: "#666",
-    fontWeight: "500",
+    color: '#666',
+    fontWeight: '500',
   },
   activeFilterText: {
-    color: "white",
+    color: 'white',
   },
   feedList: {
     paddingVertical: 8,
   },
   postCard: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     marginHorizontal: 16,
     marginVertical: 8,
     borderRadius: 12,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
   },
   postHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 16,
     paddingBottom: 8,
   },
   userInfo: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   avatar: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: "#f0f0f0",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: '#f0f0f0',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginRight: 12,
   },
   username: {
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#333",
+    fontWeight: 'bold',
+    color: '#333',
   },
   timestamp: {
     fontSize: 12,
-    color: "#666",
+    color: '#666',
     marginTop: 2,
   },
   postContent: {
     fontSize: 16,
-    color: "#333",
+    color: '#333',
     lineHeight: 22,
     paddingHorizontal: 16,
     marginBottom: 12,
   },
   videoPlaceholder: {
     height: 200,
-    backgroundColor: "#333",
+    backgroundColor: '#333',
     marginHorizontal: 16,
     borderRadius: 8,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 12,
   },
   videoLabel: {
-    color: "white",
+    color: 'white',
     fontSize: 14,
     marginTop: 8,
   },
   postActions: {
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderTopWidth: 1,
-    borderTopColor: "#f0f0f0",
+    borderTopColor: '#f0f0f0',
   },
   actionButton: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginRight: 24,
   },
   actionText: {
     marginLeft: 6,
     fontSize: 14,
-    color: "#666",
+    color: '#666',
   },
   commentsSection: {
     borderTopWidth: 1,
-    borderTopColor: "#f0f0f0",
+    borderTopColor: '#f0f0f0',
     paddingTop: 12,
   },
   comment: {
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingHorizontal: 16,
     paddingVertical: 8,
   },
@@ -368,9 +367,9 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: "#f0f0f0",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: '#f0f0f0',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginRight: 8,
   },
   commentContent: {
@@ -378,32 +377,32 @@ const styles = StyleSheet.create({
   },
   commentUser: {
     fontSize: 14,
-    fontWeight: "600",
-    color: "#333",
+    fontWeight: '600',
+    color: '#333',
     marginBottom: 2,
   },
   commentText: {
     fontSize: 14,
-    color: "#333",
+    color: '#333',
     lineHeight: 18,
     marginBottom: 4,
   },
   commentTime: {
     fontSize: 12,
-    color: "#666",
+    color: '#666',
   },
   addComment: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderTopWidth: 1,
-    borderTopColor: "#f0f0f0",
+    borderTopColor: '#f0f0f0',
   },
   commentInput: {
     flex: 1,
     borderWidth: 1,
-    borderColor: "#e0e0e0",
+    borderColor: '#e0e0e0',
     borderRadius: 20,
     paddingHorizontal: 16,
     paddingVertical: 8,
