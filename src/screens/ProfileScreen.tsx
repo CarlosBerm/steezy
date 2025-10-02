@@ -5,7 +5,6 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {User, Level} from '../types';
@@ -277,7 +276,7 @@ const ProfileScreen: React.FC = () => {
           </TouchableOpacity>
         </View>
 
-        {friends.map((friend, index) => (
+        {friends.map(friend => (
           <View key={friend.id}>{renderFriend({item: friend})}</View>
         ))}
 
@@ -322,7 +321,9 @@ const styles = StyleSheet.create({
   profileHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 20,
+    paddingTop: 50,
+    paddingBottom: 20,
+    paddingHorizontal: 16,
     backgroundColor: 'white',
     marginBottom: 16,
   },
