@@ -131,10 +131,6 @@ The app features a smart progression system that guides users through tricks bas
 - **Friend Discovery**: Find riders with similar skill levels
 - **Group Challenges**: Planned feature for community events
 
-## License
-
-MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Contributing
 
 Contributions are welcome! Please read our contributing guidelines and submit pull requests for any improvements.
